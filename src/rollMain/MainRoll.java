@@ -1,5 +1,6 @@
 package rollMain;
 
+import alerts.ExitAlert;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -29,6 +30,10 @@ public class MainRoll extends Application {
         stage.setTitle("RollMess");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e ->{
+            e.consume();
+            new ExitAlert();
+        });
     }
     //------------------------------------------------------------------------------------------------------------------
 }
