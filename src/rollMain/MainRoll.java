@@ -16,7 +16,7 @@ public class MainRoll extends Application {
     // Pane & Scene setup-----------------------------------------------------------------------------------------------
     private Pane pane = new Pane();
     private Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-    private Scene scene = new Scene(pane, bounds.getWidth(), bounds.getHeight());
+    private Scene scene = new Scene(pane, bounds.getWidth() / 3, bounds.getHeight() / 2);
     //------------------------------------------------------------------------------------------------------------------
 
     // Main method------------------------------------------------------------------------------------------------------
@@ -34,6 +34,8 @@ public class MainRoll extends Application {
 
         // Stage setup--------------------------------------------------------------------------------------------------
         stage.setTitle("RollMess");
+        stage.setX(bounds.getWidth() / 3);
+        stage.setY(bounds.getHeight() / 3);
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(e ->{
