@@ -24,9 +24,10 @@ public class RollUI extends Pane {
     private final MenuItem clear = new MenuItem("Clear Text");
     private final SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
     //------------------------------------------------------------------------------------------------------------------
-    private final GridPane root = new GridPane();
+
     // Root pane variables----------------------------------------------------------------------------------------------
     private Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+    private final GridPane root = new GridPane();
     //------------------------------------------------------------------------------------------------------------------
 
     // Constructor------------------------------------------------------------------------------------------------------
