@@ -37,6 +37,8 @@ public class RollUI extends Pane {
 
     // RollUI layout method---------------------------------------------------------------------------------------------
     private void layoutSetup() {
+        root.setPrefWidth(bounds.getWidth() / 3);
+        root.setPrefHeight(bounds.getHeight() / 2);
         getChildren().add(root);
     }
     //------------------------------------------------------------------------------------------------------------------

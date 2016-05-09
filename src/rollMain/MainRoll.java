@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import rollMessContent.RollUI;
 
 /**
  * Created by TIMBULI REMUS K@puc!n on 04-May-16.
@@ -33,6 +34,7 @@ public class MainRoll extends Application {
         //--------------------------------------------------------------------------------------------------------------
 
         // Stage setup--------------------------------------------------------------------------------------------------
+        pane.getChildren().add(new RollUI());
         stage.setTitle("RollMess");
         stage.setX(bounds.getWidth() / 3);
         stage.setY(bounds.getHeight() / 3);
