@@ -6,6 +6,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 /**
  * Created by TIMBULI REMUS K@puc!n on 07-May-16.
  */
@@ -25,6 +29,14 @@ public class RollUI extends Pane {
     // Chat fields variables--------------------------------------------------------------------------------------------
     private TextField textField = new TextField();
     private TextArea textArea = new TextArea();
+    //------------------------------------------------------------------------------------------------------------------
+
+    // Chat connexion variables-----------------------------------------------------------------------------------------
+    private ObjectOutputStream toServer;
+    private ObjectInputStream fromServer;
+    private String host = "localhost";
+    private final int chatPort = 9000;
+    private Socket chatSocket;
     //------------------------------------------------------------------------------------------------------------------
 
     // Root pane variables----------------------------------------------------------------------------------------------
