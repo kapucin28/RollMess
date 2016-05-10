@@ -1,10 +1,7 @@
 package rollMessContent;
 
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
@@ -23,6 +20,11 @@ public class RollUI extends Pane {
     private final MenuItem exit = new MenuItem("Exit");
     private final MenuItem clear = new MenuItem("Clear Text");
     private final SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
+    //------------------------------------------------------------------------------------------------------------------
+
+    // Chat fields variables--------------------------------------------------------------------------------------------
+    private TextField textField = new TextField();
+    private TextArea textArea = new TextArea();
     //------------------------------------------------------------------------------------------------------------------
 
     // Root pane variables----------------------------------------------------------------------------------------------
