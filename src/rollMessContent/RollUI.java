@@ -4,8 +4,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -37,6 +40,14 @@ public class RollUI extends Pane {
     private String host = "localhost";
     private final int chatPort = 9000;
     private Socket chatSocket;
+    //------------------------------------------------------------------------------------------------------------------
+
+    // File Chooser-----------------------------------------------------------------------------------------------------
+    private Stage fileStage = new Stage();
+    private FileChooser chooser;
+    private File file;
+    private ObjectOutputStream toFile;
+    private ObjectInputStream fromFile;
     //------------------------------------------------------------------------------------------------------------------
 
     // Root pane variables----------------------------------------------------------------------------------------------
