@@ -70,8 +70,18 @@ public class RollUI extends Pane {
         menuBar.getMenus().addAll(fileMenu, editMenu);
         //--------------------------------------------------------------------------------------------------------------
 
+        // Chat area setup----------------------------------------------------------------------------------------------
+        textArea.setPrefHeight(bounds.getHeight() / 3 + 75);
+        textArea.setPrefWidth(bounds.getWidth() / 4);
+        textField.setPrefWidth(bounds.getWidth() / 3);
+        textArea.setPromptText("Messages received");
+        textField.setPromptText("Write message");
+        //--------------------------------------------------------------------------------------------------------------
+
         // Root setup---------------------------------------------------------------------------------------------------
         root.add(menuBar, 0, 0);
+        root.add(textField, 0, 1);
+        root.add(textArea, 0, 2);
         root.setPrefWidth(bounds.getWidth() / 3);
         root.setPrefHeight(bounds.getHeight() / 2);
         getChildren().add(root);
