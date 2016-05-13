@@ -3,6 +3,7 @@ package rollMessContent;
 import alerts.ExitAlert;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -113,8 +114,27 @@ public class RollUI extends Pane {
 
     // User actions method----------------------------------------------------------------------------------------------
     private void userActions() {
+        sendMessage();
         clearTable();
         exitSetup();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+    // Send message method----------------------------------------------------------------------------------------------
+    private void sendMessage(){
+        textField.setOnKeyPressed(e ->{
+            if (e.getCode() == KeyCode.ENTER){
+                try {
+                    toServer = new ObjectOutputStream(chatSocket.getOutputStream());
+                    toServer.writeObject(textField.getText() + "\n");
+                    toServer.flush();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                textArea.appendText("Sent: " + textField.getText() + "\n");
+                textField.clear();
+            }
+        });
     }
     //------------------------------------------------------------------------------------------------------------------
 
