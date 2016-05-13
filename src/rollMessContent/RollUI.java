@@ -10,6 +10,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -38,6 +39,7 @@ public class RollUI extends Pane {
     // Chat connexion variables-----------------------------------------------------------------------------------------
     private ObjectOutputStream toServer;
     private ObjectInputStream fromServer;
+    private Object message;
     private String host = "localhost";
     private final int chatPort = 9000;
     private Socket chatSocket;
@@ -59,6 +61,7 @@ public class RollUI extends Pane {
     // Constructor------------------------------------------------------------------------------------------------------
     public RollUI() {
         layoutSetup();
+        chatThread();
         userActions();
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -91,22 +94,39 @@ public class RollUI extends Pane {
     }
     //------------------------------------------------------------------------------------------------------------------
 
+    // Chat Thread method-----------------------------------------------------------------------------------------------
+    private void chatThread() {
+        new Thread(() -> {
+            try {
+                chatSocket = new Socket(host, chatPort);
+                while (true) {
+                    fromServer = new ObjectInputStream(chatSocket.getInputStream());
+                    message = fromServer.readObject();
+                    textArea.appendText("Received from server: " + message + "\n");
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
     // User actions method----------------------------------------------------------------------------------------------
-    private void userActions(){
+    private void userActions() {
         clearTable();
         exitSetup();
     }
     //------------------------------------------------------------------------------------------------------------------
 
     // Clear table method-----------------------------------------------------------------------------------------------
-    private void clearTable(){
+    private void clearTable() {
         clear.setOnAction(e -> textArea.clear());
     }
     //------------------------------------------------------------------------------------------------------------------
 
     // Exit method -----------------------------------------------------------------------------------------------------
-    private void exitSetup(){
-        exit.setOnAction(e ->{
+    private void exitSetup() {
+        exit.setOnAction(e -> {
             e.consume();
             new ExitAlert();
         });
@@ -118,6 +138,8 @@ public class RollUI extends Pane {
         return chatSocket;
     }
     //------------------------------------------------------------------------------------------------------------------
+
+
 }
 
 
