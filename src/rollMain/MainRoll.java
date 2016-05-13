@@ -21,13 +21,13 @@ public class MainRoll extends Application {
     //------------------------------------------------------------------------------------------------------------------
 
     // Main method------------------------------------------------------------------------------------------------------
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Application.launch(args);
     }
     //------------------------------------------------------------------------------------------------------------------
 
     // Start method-----------------------------------------------------------------------------------------------------
-    public void start(Stage stage){
+    public void start(Stage stage) {
 
         // CSS stylesheet-----------------------------------------------------------------------------------------------
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -40,7 +40,7 @@ public class MainRoll extends Application {
         stage.setY(bounds.getHeight() / 3);
         stage.setScene(scene);
         stage.show();
-        stage.setOnCloseRequest(e ->{
+        stage.setOnCloseRequest(e -> {
             e.consume();
             new ExitAlert();
         });

@@ -1,5 +1,6 @@
 package rollMessContent;
 
+import alerts.EmptyAlert;
 import alerts.ExitAlert;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
@@ -115,15 +116,16 @@ public class RollUI extends Pane {
     // User actions method----------------------------------------------------------------------------------------------
     private void userActions() {
         sendMessage();
+        saveMessages();
         clearTable();
         exitSetup();
     }
     //------------------------------------------------------------------------------------------------------------------
 
     // Send message method----------------------------------------------------------------------------------------------
-    private void sendMessage(){
-        textField.setOnKeyPressed(e ->{
-            if (e.getCode() == KeyCode.ENTER){
+    private void sendMessage() {
+        textField.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 try {
                     toServer = new ObjectOutputStream(chatSocket.getOutputStream());
                     toServer.writeObject(textField.getText() + "\n");
@@ -133,6 +135,16 @@ public class RollUI extends Pane {
                 }
                 textArea.appendText("Sent: " + textField.getText() + "\n");
                 textField.clear();
+            }
+        });
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+    // Save messages to file--------------------------------------------------------------------------------------------
+    private void saveMessages() {
+        save.setOnAction(e -> {
+            if (textArea.getText().isEmpty()) {
+                new EmptyAlert();
             }
         });
     }
@@ -152,34 +164,4 @@ public class RollUI extends Pane {
         });
     }
     //------------------------------------------------------------------------------------------------------------------
-
-    // Getters & Setters------------------------------------------------------------------------------------------------
-    public Socket getChatSocket() {
-        return chatSocket;
-    }
-    //------------------------------------------------------------------------------------------------------------------
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
