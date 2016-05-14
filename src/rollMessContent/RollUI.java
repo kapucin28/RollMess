@@ -11,10 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -51,6 +48,7 @@ public class RollUI extends Pane {
     private Stage fileStage = new Stage();
     private FileChooser chooser;
     private File file;
+    private Object fileMessages;
     private ObjectOutputStream toFile;
     private ObjectInputStream fromFile;
     //------------------------------------------------------------------------------------------------------------------
@@ -145,6 +143,19 @@ public class RollUI extends Pane {
         save.setOnAction(e -> {
             if (textArea.getText().isEmpty()) {
                 new EmptyAlert();
+            } else {
+                fileStage = new Stage();
+                chooser = new FileChooser();
+                chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files", "*.*"));
+                file = chooser.showSaveDialog(fileStage);
+                try {
+                    toFile = new ObjectOutputStream(new FileOutputStream(file));
+                    fileMessages = textArea.getText();
+                    toFile.writeObject(fileMessages);
+                    toFile.flush();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

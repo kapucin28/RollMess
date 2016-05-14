@@ -4,9 +4,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
-import rollMessContent.RollUI;
-
-import java.io.IOException;
 
 /**
  * Created by TIMBULI REMUS K@puc!n on 05-May-16.
