@@ -163,8 +163,8 @@ public class RollUI extends Pane {
     //------------------------------------------------------------------------------------------------------------------
 
     // Load messages from file------------------------------------------------------------------------------------------
-    private void loadMessages(){
-        load.setOnAction(e ->{
+    private void loadMessages() {
+        load.setOnAction(e -> {
             fileStage = new Stage();
             chooser = new FileChooser();
             chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files", "*.*"));

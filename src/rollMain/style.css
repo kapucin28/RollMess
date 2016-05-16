@@ -1,0 +1,15 @@
+.menu-bar{
+    -fx-background-color: linear-gradient(#001EFF 0%, #FFFFFF 100%);
+}
+
+.menu-item{
+    -fx-background-color: linear-gradient(#001EFF 0%, #FFFFFF 100%);
+}
+
+.menu-item:hover{
+    -fx-background-color: #001EFF;
+}
+
+.label{
+    -fx-text-fill: #FFFFFF;
+}
