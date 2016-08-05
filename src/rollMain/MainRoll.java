@@ -12,7 +12,7 @@ import rollMessContent.RollUI;
 /**
  * Created by TIMBULI REMUS K@puc!n on 04-May-16.
  *
- *      This is the main class in witch the stage and scene
+ *      This is the main class in which the stage and scene
  * are created
  */
 public class MainRoll extends Application {

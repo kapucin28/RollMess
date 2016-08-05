@@ -8,7 +8,7 @@ import javafx.stage.StageStyle;
 /**
  * Created by TIMBULI REMUS K@puc!n on 13-May-16.
  *
- *      This class represents the empty alert witch will popup
+ *      This class represents the empty alert which will popup
  * when the user tries to send an empty message
  */
 public class EmptyAlert {
