@@ -16,6 +16,9 @@ import java.net.Socket;
 
 /**
  * Created by TIMBULI REMUS K@puc!n on 07-May-16.
+ *
+ *      This is class in which the GUI and network connections
+ * are initialized
  */
 public class RollUI extends Pane {
 
