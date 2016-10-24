@@ -2,13 +2,12 @@ package rollMessContent;
 
 import alerts.EmptyAlert;
 import alerts.ExitAlert;
-import javafx.geometry.Rectangle2D;
+import interfaces.Scale;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -20,7 +19,7 @@ import java.net.Socket;
  *      This is class in which the GUI and network connections
  * are initialized
  */
-public class RollUI extends Pane {
+public class RollUI extends Pane implements Scale{
 
     // Menu variables---------------------------------------------------------------------------------------------------
     private final MenuBar menuBar = new MenuBar();
@@ -57,7 +56,6 @@ public class RollUI extends Pane {
     //------------------------------------------------------------------------------------------------------------------
 
     // Root pane variables----------------------------------------------------------------------------------------------
-    private Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
     private final GridPane root = new GridPane();
     //------------------------------------------------------------------------------------------------------------------
 
@@ -79,9 +77,9 @@ public class RollUI extends Pane {
         //--------------------------------------------------------------------------------------------------------------
 
         // Chat area setup----------------------------------------------------------------------------------------------
-        textArea.setPrefHeight(bounds.getHeight() / 3 + 75);
-        textArea.setPrefWidth(bounds.getWidth() / 4);
-        textField.setPrefWidth(bounds.getWidth() / 3);
+        textArea.setPrefHeight(SCREEN_HEIGHT / 3 + 75);
+        textArea.setPrefWidth(SCREEN_WIDTH / 4);
+        textField.setPrefWidth(SCREEN_WIDTH / 3);
         textArea.setPromptText("Messages received");
         textField.setPromptText("Write message");
         //--------------------------------------------------------------------------------------------------------------
@@ -90,8 +88,8 @@ public class RollUI extends Pane {
         root.add(menuBar, 0, 0);
         root.add(textField, 0, 1);
         root.add(textArea, 0, 2);
-        root.setPrefWidth(bounds.getWidth() / 3);
-        root.setPrefHeight(bounds.getHeight() / 2);
+        root.setPrefWidth(SCREEN_WIDTH / 3);
+        root.setPrefHeight(SCREEN_HEIGHT / 2);
         getChildren().add(root);
         //--------------------------------------------------------------------------------------------------------------
     }
@@ -102,11 +100,11 @@ public class RollUI extends Pane {
         new Thread(() -> {
             try {
                 chatSocket = new Socket(host, chatPort);
-                while (true) {
+                do {
                     fromServer = new ObjectInputStream(chatSocket.getInputStream());
                     message = fromServer.readObject();
                     textArea.appendText("Received from server: " + message + "\n");
-                }
+                } while (chatSocket.isConnected());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
