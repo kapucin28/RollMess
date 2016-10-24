@@ -1,11 +1,10 @@
 package rollMain;
 
 import alerts.ExitAlert;
+import interfaces.Scale;
 import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import rollMessContent.RollUI;
 
@@ -15,12 +14,11 @@ import rollMessContent.RollUI;
  *      This is the main class in which the stage and scene
  * are created
  */
-public class MainRoll extends Application {
+public class MainRoll extends Application implements Scale{
 
     // Pane & Scene setup-----------------------------------------------------------------------------------------------
     private Pane pane = new Pane();
-    private Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-    private Scene scene = new Scene(pane, bounds.getWidth() / 3, bounds.getHeight() / 2);
+    private Scene scene = new Scene(pane, SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
     //------------------------------------------------------------------------------------------------------------------
 
     // Main method------------------------------------------------------------------------------------------------------
@@ -39,8 +37,8 @@ public class MainRoll extends Application {
         // Stage setup--------------------------------------------------------------------------------------------------
         pane.getChildren().add(new RollUI());
         stage.setTitle("RollMess");
-        stage.setX(bounds.getWidth() / 2);
-        stage.setY(bounds.getHeight() / 3);
+        stage.setX(SCREEN_WIDTH / 2);
+        stage.setY(SCREEN_HEIGHT / 3);
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(e -> {
