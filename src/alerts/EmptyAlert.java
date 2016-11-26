@@ -1,5 +1,6 @@
 package alerts;
 
+import interfaces.AlertsMessages;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
@@ -14,7 +15,8 @@ import javafx.stage.StageStyle;
 public class EmptyAlert {
 
     // Alert variable---------------------------------------------------------------------------------------------------
-    private Alert alert = new Alert(Alert.AlertType.WARNING, "Empty Field", ButtonType.OK);
+    private Alert alert = new Alert(Alert.AlertType.WARNING, AlertsMessages.emptyMessage,
+            ButtonType.OK);
     //------------------------------------------------------------------------------------------------------------------
 
     // Constructor------------------------------------------------------------------------------------------------------
