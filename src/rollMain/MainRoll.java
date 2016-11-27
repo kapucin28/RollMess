@@ -1,6 +1,7 @@
 package rollMain;
 
 import alerts.ExitAlert;
+import interfaces.ObjectsTitles;
 import interfaces.Scale;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,11 +11,11 @@ import rollMessContent.RollUI;
 
 /**
  * Created by TIMBULI REMUS K@puc!n on 04-May-16.
- *
- *      This is the main class in which the stage and scene
+ * <p>
+ * This is the main class in which the stage and scene
  * are created
  */
-public class MainRoll extends Application implements Scale{
+public class MainRoll extends Application implements Scale {
 
     // Pane & Scene setup-----------------------------------------------------------------------------------------------
     private Pane pane = new Pane();
@@ -31,12 +32,12 @@ public class MainRoll extends Application implements Scale{
     public void start(Stage stage) {
 
         // CSS stylesheet-----------------------------------------------------------------------------------------------
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource(ObjectsTitles.cssFile).toExternalForm());
         //--------------------------------------------------------------------------------------------------------------
 
         // Stage setup--------------------------------------------------------------------------------------------------
         pane.getChildren().add(new RollUI());
-        stage.setTitle("RollMess");
+        stage.setTitle(ObjectsTitles.stageTitle);
         stage.setX(SCREEN_WIDTH / 2);
         stage.setY(SCREEN_HEIGHT / 3);
         stage.setScene(scene);
