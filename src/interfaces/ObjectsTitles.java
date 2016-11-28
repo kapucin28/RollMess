@@ -21,6 +21,6 @@ public interface ObjectsTitles {
     String textAreaAppendReceived = "Received from server: ";
     String textAreaAppendSent = "Sent: ";
     String extensionFilter = "All Files";
-    String extensinType = "*.*";
+    String extensionType = "*.*";
 
 }
